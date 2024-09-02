@@ -4,6 +4,8 @@ use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\VentasController;
+use App\Models\Venta;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,8 +41,17 @@ Route::middleware(['auth'])->group(function (){
         Route::post('productos', 'store')->name('productos.store');
         Route::get('productos/{id}',  'show')->name('productos.show');
         Route::put('productos/{id}', 'update')->name('productos.update');
-        Route::delete('productos/{id}',  'destroy')->name('productos.destroy');
-        
+        Route::delete('productos/{id}',  'destroy')->name('productos.destroy'); 
+        Route::get('/productos/{id}/stock','getStock');
+
+    });
+    Route::controller(VentasController::class)->group(function () {
+        Route::get('ventas', 'index')->name('ventas.index');
+        Route::get('ventas/creando',  'crear')->name('ventas.crear');
+        Route::post('ventas', 'store')->name('ventas.store');
+        Route::get('ventas/{id}',  'show')->name('ventas.show');
+        Route::put('ventas/{id}', 'update')->name('ventas.update');
+        Route::delete('ventas/{id}',  'destroy')->name('ventas.destroy'); 
     });
 
     Route::controller(ClientesController::class)->group(function () {

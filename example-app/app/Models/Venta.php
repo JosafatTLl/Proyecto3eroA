@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Venta extends Model
 {
     use HasFactory;
+    protected $primaryKey = "VentaID";
+    protected $fillable = ["VentaID", "ProductoID", "NombreCliente","Cantidad", "PrecioTotal"];
 }

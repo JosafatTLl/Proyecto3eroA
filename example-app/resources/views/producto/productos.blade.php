@@ -3,31 +3,28 @@
 @section('title', 'Productos')
 @section('navbar')
 
-
 <div class="container">
   <h1>PRODUCTOS</h1>
   <hr>
   <a href="{{route('productos.crear')}}" class="btn btn-primary">Agregar Producto</a>
   <hr>
-  LISTA DE PRODUCTOS
+  <h4>LISTA DE PRODUCTOS</h4>
     <table class="table">
         <thead>
           <tr>
-            
-            <th scope="col">#</th>
+            <th>#</th>
             <th scope="col">nombre</th>
             <th scope="col">stock</th>
             <th scope="col">Precio Unitario</th>
             <th scope="col">Descripcion</th>
+            <th scope="col">Acciones</th>
           </tr>
         </thead>
-        
         <tbody>
           @php $i = 1 ;@endphp
             @foreach ($productos as $producto)
             <tr>
                 <th scope="row"></th>
-                <th scope="col">{{$i++}}</th>
                 <td>{{$producto->Nombre}}</td>
                 <td>{{$producto->stock}}</td>
                 <td>{{$producto->PrecioUnitario}}</td>
