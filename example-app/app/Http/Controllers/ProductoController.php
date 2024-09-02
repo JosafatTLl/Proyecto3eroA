@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Spatie\FlareClient\View;
 use App\Models\Producto;
 use Spatie\LaravelIgnition\Recorders\DumpRecorder\DumpHandler;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class ProductoController extends Controller
 {
@@ -51,11 +52,14 @@ class ProductoController extends Controller
         $producto->delete();
         return redirect()->route('productos.index')->with('success', 'Producto eliminado exitosamente.');
     }
-    public function update()
+    public function update(Request $request, $id)
     {
-        $producto = Producto::findORfail($id);
-        $producto->update();
-        return redirect()->route('productos.index')->with('success', 'Producto eliminado exitosamente.');
+        // Validation and update logic
+        $producto = Producto::findOrFail($id);
+        $producto->update($request->all());
+    
+        return redirect()->route('productos.index')
+            ->with('success', 'Producto actualizado correctamente');
     }
-
+    
 }

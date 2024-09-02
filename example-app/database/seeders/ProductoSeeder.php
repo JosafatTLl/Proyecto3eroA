@@ -16,7 +16,7 @@ class ProductoSeeder extends Seeder
     public function run()
     {
         // Crear 5000 registros usando el factory
-        Producto::factory(5000)->create();
+        Producto::factory(10)->create();
     }
 }
 class CleanUpSeeder extends Seeder

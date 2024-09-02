@@ -1,8 +1,6 @@
 @extends('header.navbar')
 @extends('body.cuerpo')
-
 @section('title', 'Productos')
-
 @section('navbar')
 
 
@@ -11,10 +9,11 @@
   <hr>
   <a href="{{route('productos.crear')}}" class="btn btn-primary">Agregar Producto</a>
   <hr>
-  LISTA DE PROTUCTOS
+  LISTA DE PRODUCTOS
     <table class="table">
         <thead>
           <tr>
+            
             <th scope="col">#</th>
             <th scope="col">nombre</th>
             <th scope="col">stock</th>
@@ -24,9 +23,11 @@
         </thead>
         
         <tbody>
+          @php $i = 1 ;@endphp
             @foreach ($productos as $producto)
             <tr>
-                <th scope="row">1</th>
+                <th scope="row"></th>
+                <th scope="col">{{$i++}}</th>
                 <td>{{$producto->Nombre}}</td>
                 <td>{{$producto->stock}}</td>
                 <td>{{$producto->PrecioUnitario}}</td>

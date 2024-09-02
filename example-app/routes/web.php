@@ -30,7 +30,7 @@ Route::get('logout', [loginController::class, 'logout'])->name('logout');
 
 //MIDLEWARE
 
-Route::middleware('auth')->group(function (){
+Route::middleware(['auth'])->group(function (){
 
     Route::get('inicio', [InicioController::class, 'inicio'])->name('inicio');  
     Route::controller(ProductoController::class)->group(function () {
@@ -38,9 +38,11 @@ Route::middleware('auth')->group(function (){
         Route::get('productos/creando',  'crear')->name('productos.crear');
         Route::post('productos', 'store')->name('productos.store');
         Route::get('productos/{id}',  'show')->name('productos.show');
+        Route::put('productos/{id}', 'update')->name('productos.update');
         Route::delete('productos/{id}',  'destroy')->name('productos.destroy');
-        Route::put('productos', 'update')->name('productos.edit');
+        
     });
+
     Route::controller(ClientesController::class)->group(function () {
         Route::get('cliente', 'index');
         Route::get('cliente/creando',  'crear');

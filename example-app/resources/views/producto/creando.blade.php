@@ -5,6 +5,7 @@
 
 @section('navbar')
 @section('cuerpo')
+
 <div class="container mt-5">
     <h2 class="mb-4">Agregar Producto</h2>
     <form action="{{ route('productos.store') }}" method="POST">
